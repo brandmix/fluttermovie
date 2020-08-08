@@ -1,4 +1,3 @@
-
 name: Slash Command Dispatch
 on:
   issue_comment:
@@ -19,33 +18,27 @@ jobs:
               {
                 "command": "help",
                 "permission": "write",
-                "issue_type": "issue",
-                "repository": "slaystack/xops"
+                "issue_type": "issue"
               },
               {
                 "command": "help",
                 "permission": "write",
                 "issue_type": "pull-request",
-                "repository": "slaystack/xops",
                 "event_type_suffix": "-pr-command"
               },
               {
                 "command": "hello-world",
                 "permission": "write",
-                "issue_type": "issue",
-                "repository": "slaystack/xops"
+                "issue_type": "issue"
               },
               {
                 "command": "ping",
                 "permission": "write",
-                "issue_type": "issue",
-                "repository": "slaystack/xops"
+                "issue_type": "issue"
               },
               {
                 "command": "rebase",
                 "permission": "admin",
-                "issue_type": "pull-request",
-                "repository": "slaystack/xops"
+                "issue_type": "pull-request"
               }
             ]
-
