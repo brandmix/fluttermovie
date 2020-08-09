@@ -9,3 +9,4 @@ targets:
           - --fast-startup
           - --trust-primitives
           - --trust-type-annotations
+          - -DTMDB_KEY=<Unknown>

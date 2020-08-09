@@ -28,12 +28,11 @@ COPY --chown=cirrus:cirrus ./web /src/web
 COPY --chown=cirrus:cirrus ./ci-getdeps.sh /src/
 RUN cd /src && ./ci-getdeps.sh
 
-RUN flutter pub global activate webdev
+COPY --chown=cirrus:cirrus ./ci-script.sh /src/
+RUN cd /src && ./ci-script.sh
 
-ARG TMDB_KEY
-RUN sed -i "s/-DTMDB_KEY=.*/-DTMDB_KEY=$TMDB_KEY/" /src/web/build.yaml
-RUN cat /src/web/build.yaml
-RUN cd /src/web && webdev build
+COPY --chown=cirrus:cirrus ./release-all.sh /src/
+RUN cd /src && ./release-all.sh
 
 #Deploy SPA
 FROM alpine:latest

@@ -1,4 +1,4 @@
-app_identifier("com.roughike.inkino.ios") # The bundle identifier of your app
+app_identifier("com.gharmeet.inkino.ios") # The bundle identifier of your app
 apple_id("iiro.krankka@icloud.com") # Your Apple email address
 
 itc_team_id("119010849") # App Store Connect Team ID

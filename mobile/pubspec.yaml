@@ -1,6 +1,9 @@
 name: inkino
 description: A new Flutter application.
 
+module:
+  androidX: true # Add this line.
+
 dependencies:
   core:
     path: ../core

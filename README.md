@@ -10,10 +10,10 @@ inKino is being sponsored by the following tool; please help support us by takin
 
 [![Build Status](https://travis-ci.org/roughike/inKino.svg?branch=development)](https://travis-ci.org/roughike/inKino)
 
-inKino is a _multiplatform_ Dart app for browsing movies and showtimes for Finnkino cinemas. 
+inKino is a _multiplatform_ Dart app for browsing movies and showtimes for Finnkino cinemas.
 
 InKino showcases Redux, has an extensive set of automated tests and **40% code sharing between Flutter and web**.
-The Android & iOS apps are made with a single [Flutter](http://flutter.io) codebase. The progressive web app is made with [AngularDart](https://webdev.dartlang.org/angular). 
+The Android & iOS apps are made with a single [Flutter](http://flutter.io) codebase. The progressive web app is made with [AngularDart](https://webdev.dartlang.org/angular).
 This project is generally something that I believe is a good example of a multiplatform Dart project.
 
 I plan on doing a full article series on multiplatform Dart stuff, so you might want to [check out my blog](https://iirokrankka.com) and subscribe to it.
@@ -28,12 +28,12 @@ I plan on doing a full article series on multiplatform Dart stuff, so you might 
 
 There's three different folders. Each of them is a Dart project.
 
-* **core**: contains the pure Dart business logic, such API communication, Redux, XML parsing, sanitization, i18n, models and utilities. 
+* **core**: contains the pure Dart business logic, such API communication, Redux, XML parsing, sanitization, i18n, models and utilities.
 It also has a great test coverage.
 * **mobile**: this is the Flutter project. It imports **core**, and it's a 100% shared codebase for the native Android & iOS apps that go on app stores.
 * **web**: the AngularDart progressive web app. Also imports **core**, and it's the thing that is live at https://inkino.app.
 
-To work on these projects, open each one of them in an editor of your choice. 
+To work on these projects, open each one of them in an editor of your choice.
 
 For example, if you want to do a new feature and you do it for the Flutter project first, you'd open both **core** and **mobile** in separate editor windows.
 To clarify, you'd do `File -> Open...` for core and then `File -> Open...` again for mobile.
@@ -46,7 +46,7 @@ To clarify, you'd do `File -> Open...` for core and then `File -> Open...` again
 * Install the Dart plugin for your IDE.
 
 Finally, if you haven't already, [install Flutter](https://flutter.io/docs/get-started/install).
-And the Flutter plugin for your IDE. 
+And the Flutter plugin for your IDE.
 At the time of being, inKino is built with **Flutter 1.0**.
 
 If you don't like IDEs, [you can apparently use Emacs or Vim too](https://news.ycombinator.com/item?id=16822780).
@@ -77,12 +77,16 @@ First, ensure that you followed the "Development environment setup" section abov
 
 ## Contributing
 
-Contributions are welcome! 
-However, if it's going to be a major change, please create an issue first. 
+Contributions are welcome!
+However, if it's going to be a major change, please create an issue first.
 Before starting to work on something, please comment on a specific issue and say you'd like to work on it.
 
 ## Thanks
 
-Special thanks to [Olli Haataja](https://www.linkedin.com/in/olli-haataja-46b96b120/) for the design. 
+Special thanks to [Olli Haataja](https://www.linkedin.com/in/olli-haataja-46b96b120/) for the design.
 
 Additional thanks for the initial release go to [Thibaud Colas](https://twitter.com/thibaud_colas), [Brian Egan](https://twitter.com/brianegan), [Alessandro Aime](https://twitter.com/aimealessandro) and [Juho Rautioaho](https://github.com/Jraut) for giving their extra pair of eyes for reviewing the source code.
+
+
+docker build -t fluttermovie .
+docker run -p 8080:8080 fluttermovie
