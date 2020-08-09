@@ -13,7 +13,9 @@ flutter precache
 
 cd ${GITHUB_WORKSPACE}/mobile
 flutter doctor
-flutter build ios
+flutter build ios || :
+
+exit
 
 cd ios
 bundle update
