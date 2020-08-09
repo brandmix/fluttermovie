@@ -22,9 +22,8 @@ fi
 
 cd ${GITHUB_WORKSPACE:-.}/mobile
 flutter doctor
-flutter build ios --release --no-codesign || :
-exit
+flutter build ios --release --no-codesign
 
 cd ${GITHUB_WORKSPACE:-.}/mobile/ios
 bundle update
-bundle exec fastlane beta
+bundle exec fastlane beta || :
