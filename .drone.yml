@@ -22,8 +22,6 @@ steps:
       from_secret: REGISTRY_USERNAME
     REGISTRY_PASSWORD:
       from_secret: REGISTRY_PASSWORD
-    TMDB_KEY:
-      from_secret: TMDB_KEY
   volumes:
   - name: docksock
     path: /var/run/docker.sock

@@ -8,23 +8,11 @@ on:
 
 jobs:
 
-  build_ios:
+  build:
+    name: Build
     if: |
       !contains(github.event.head_commit.message, 'ci skip')
       && !contains(github.event.pull_request.title, 'ci skip')
-    runs-on: macos-latest
-    steps:
-
-    - name: Check out code
-      uses: actions/checkout@v2
-
-    - name: build
-      run: /bin/sh ./build.ios.sh
-      env:
-        TMDB_KEY: ${{ secrets.TMDB_KEY }}
-
-  build_web:
-    needs: build_ios
     runs-on: ubuntu-latest
     steps:
 
@@ -40,11 +28,10 @@ jobs:
         REGISTRY_REPO: harmeetg/fluttermovie
         REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
         REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
-        TMDB_KEY: ${{ secrets.TMDB_KEY }}
         GITHUB_PR_SHA: ${{ github.event.pull_request.head.sha }}
 
   dispatch:
-    needs: build_web
+    needs: build
     strategy:
       matrix:
         repo: ["slaystack/xops"]
