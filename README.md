@@ -88,5 +88,7 @@ Special thanks to [Olli Haataja](https://www.linkedin.com/in/olli-haataja-46b96b
 Additional thanks for the initial release go to [Thibaud Colas](https://twitter.com/thibaud_colas), [Brian Egan](https://twitter.com/brianegan), [Alessandro Aime](https://twitter.com/aimealessandro) and [Juho Rautioaho](https://github.com/Jraut) for giving their extra pair of eyes for reviewing the source code.
 
 
-docker build -t fluttermovie .
-docker run -p 8080:8080 fluttermovie
+
+
+## To build
+bash build.sh

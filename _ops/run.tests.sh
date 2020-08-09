@@ -1,8 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-set -o errexit
-set -o pipefail
-set -o nounset
+set -Eeuo pipefail
+
+source _ops/get-deps.sh
 
 # Analyze core, mobile and web
 (cd core && dartanalyzer ./ --fatal-infos --fatal-warnings)

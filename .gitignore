@@ -163,3 +163,6 @@ build/
 .firebase/
 .firebase-debug.log
 .DS_Store
+
+mobile/.flutter-plugins-dependencies
+mobile/ios/Flutter/flutter_export_environment.sh
