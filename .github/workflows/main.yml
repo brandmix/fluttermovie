@@ -21,12 +21,7 @@ jobs:
     - name: build
       run: /bin/sh ./build.ios.sh
       env:
-        REGISTRY_ENDPOINT: registry.hub.docker.com
-        REGISTRY_REPO: harmeetg/fluttermovie
-        REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
-        REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
         TMDB_KEY: ${{ secrets.TMDB_KEY }}
-        GITHUB_PR_SHA: ${{ github.event.pull_request.head.sha }}
 
   build_web:
     needs: build_ios
