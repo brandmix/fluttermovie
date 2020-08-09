@@ -1,16 +1,45 @@
-FROM ubuntu:20.10
+FROM cirrusci/flutter:latest-web as builder
 
-RUN apt-get update && apt-get install -y \
-    hugo \
+USER root
+
+RUN apt-get update && \
+    apt-get install -y gpg-agent && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install Google Chrome
+RUN DEBIAN_FRONTEND=noninteractive \
+ && echo 'deb http://dl.google.com/linux/chrome/deb stable main' >> /etc/apt/sources.list.d/google-chrome.list \
+ && curl -fL https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+ && apt-get update \
+ && apt-get install --no-install-recommends -y -q google-chrome-stable \
+ && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN cd /srv && hugo new site hugo && \
-    cd hugo && \
-    git init && \
-    git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke && \
-    echo 'theme = "ananke"' >> config.toml
+# Build Web Application
+FROM builder as webdev
 
-COPY hello.md /srv/hugo/content/posts/hello.md
+ENV PATH "$PATH:$HOME/.pub-cache/bin"
 
-WORKDIR /srv/hugo
-ENTRYPOINT ["/usr/bin/hugo","server", "--bind", "0.0.0.0"]
+COPY --chown=cirrus:cirrus ./assets /src/assets
+COPY --chown=cirrus:cirrus ./core /src/core
+COPY --chown=cirrus:cirrus ./mobile /src/mobile
+COPY --chown=cirrus:cirrus ./web /src/web
+
+COPY --chown=cirrus:cirrus ./ci-script.sh /src/
+RUN cd /src && ./ci-script.sh
+
+COPY --chown=cirrus:cirrus ./release-all.sh /src/
+RUN cd /src && ./release-all.sh
+
+#Deploy SPA
+FROM alpine:latest
+
+RUN apk add --no-cache openssh-client tar curl
+RUN curl --silent -o - "https://caddyserver.com/api/download?os=linux&arch=amd64" > /usr/bin/caddy
+RUN chmod 0755 /usr/bin/caddy
+
+EXPOSE 80 443
+WORKDIR /srv
+COPY --from=webdev /src/web/build /srv/
+COPY Caddyfile /etc/
+ENTRYPOINT ["/usr/bin/caddy","run","-config","/etc/Caddyfile"]

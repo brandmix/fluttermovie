@@ -4,13 +4,10 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
-# Rename tmdb_config.dart.sample file so that the project compiles
-(cd core/lib/src && mv tmdb_config.dart.sample tmdb_config.dart)
-
 # Get all packages for core, mobile and web
-(cd core && pub get)
-(cd web && pub get)
-(cd mobile && flutter packages get)
+(cd core && flutter pub get)
+(cd web && flutter pub get)
+(cd mobile && flutter pub get)
 
 # Analyze core, mobile and web
 (cd core && dartanalyzer ./ --fatal-infos --fatal-warnings)
@@ -19,7 +16,7 @@ set -o nounset
 
 # Run tests for core, mobile and web
 echo "--- Running tests in core... ---"
-(cd core && pub run test)
+(cd core && flutter pub run test)
 
 echo "--- Running tests in mobile... ---"
 (cd mobile && flutter test)
