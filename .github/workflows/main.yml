@@ -19,8 +19,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: build
-      with:
-        args: /bin/sh ./build.ios.sh
+      run: /bin/sh ./build.ios.sh
       env:
         REGISTRY_ENDPOINT: registry.hub.docker.com
         REGISTRY_REPO: harmeetg/fluttermovie
