@@ -50,7 +50,7 @@ jobs:
         GITHUB_PR_SHA: ${{ github.event.pull_request.head.sha }}
 
   dispatch:
-    needs: build
+    needs: build_web
     strategy:
       matrix:
         repo: ["slaystack/xops"]
