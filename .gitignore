@@ -163,5 +163,3 @@ build/
 .firebase/
 .firebase-debug.log
 .DS_Store
-
-core/lib/src/tmdb_config.dart
