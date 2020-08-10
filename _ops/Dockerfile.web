@@ -1,4 +1,4 @@
-FROM cirrusci/flutter:latest-web as builder
+FROM cirrusci/flutter:1.17.2-web as builder
 
 USER root
 
@@ -19,20 +19,14 @@ RUN DEBIAN_FRONTEND=noninteractive \
 FROM builder as webdev
 
 ENV PATH "$PATH:$HOME/.pub-cache/bin"
+WORKDIR /src
+COPY --chown=cirrus:cirrus ./ /src/
 
-COPY --chown=cirrus:cirrus ./assets /src/assets
-COPY --chown=cirrus:cirrus ./core /src/core
-COPY --chown=cirrus:cirrus ./mobile /src/mobile
-COPY --chown=cirrus:cirrus ./web /src/web
+ARG TMDB_KEY
+RUN sed -i "s/-DTMDB_KEY=.*/-DTMDB_KEY=$TMDB_KEY/" web/build.yaml
 
-COPY --chown=cirrus:cirrus ./ci-getdeps.sh /src/
-RUN cd /src && ./ci-getdeps.sh
-
-COPY --chown=cirrus:cirrus ./ci-script.sh /src/
-RUN cd /src && ./ci-script.sh
-
-COPY --chown=cirrus:cirrus ./release-all.sh /src/
-RUN cd /src && ./release-all.sh
+RUN bash _ops/run.tests.sh
+RUN bash _ops/release-all.sh
 
 #Deploy SPA
 FROM alpine:latest
@@ -41,8 +35,10 @@ RUN apk add --no-cache openssh-client tar curl
 RUN curl --silent -o - "https://caddyserver.com/api/download?os=linux&arch=amd64" > /usr/bin/caddy
 RUN chmod 0755 /usr/bin/caddy
 
-EXPOSE 80 443
-WORKDIR /srv
-COPY --from=webdev /src/web/build /srv/
+COPY --from=webdev /src/web/build /srv/www
+COPY --from=webdev /src/mobile/build/app/outputs/apk/release/app-release.apk /srv/android
 COPY Caddyfile /etc/
+
+EXPOSE 80 443
+WORKDIR /srv/www
 ENTRYPOINT ["/usr/bin/caddy","run","-config","/etc/Caddyfile"]
