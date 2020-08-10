@@ -20,10 +20,9 @@ FROM builder as webdev
 
 ENV PATH "$PATH:$HOME/.pub-cache/bin"
 WORKDIR /src
-COPY --chown=cirrus:cirrus ./ /src
+COPY --chown=cirrus:cirrus ./ /src/
 
 ARG TMDB_KEY
-RUN pwd && ls -al
 RUN sed -i "s/-DTMDB_KEY=.*/-DTMDB_KEY=$TMDB_KEY/" web/build.yaml
 
 RUN bash _ops/run.tests.sh
