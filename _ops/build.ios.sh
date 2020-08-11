@@ -31,7 +31,7 @@ fi
 export PATH="$PATH:~/flutter/flutter/bin"
 pushd ${GITHUB_WORKSPACE:-.}/mobile
 flutter doctor
-flutter build ios --release --no-codesign
+flutter build --dart-define=TMDB_KEY=$TMDB_KEY ios --release --no-codesign
 popd
 
 if [[ ! -z "${GITHUB_WORKSPACE:-}" ]]; then

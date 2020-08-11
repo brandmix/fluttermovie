@@ -92,3 +92,8 @@ Additional thanks for the initial release go to [Thibaud Colas](https://twitter.
 
 ## To build
 bash build.sh
+
+# For IOS
+export TMDB_KEY=
+export APPLE_ID=
+flutter run --dart-define=TMDB_KEY=$TMDB_KEY

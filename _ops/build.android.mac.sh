@@ -35,6 +35,7 @@ export ANDROID_SDK_ROOT=~/Library/Android/sdk
 pushd ${GITHUB_WORKSPACE:-.}/mobile
 yes "y" | flutter doctor --android-licenses || :
 flutter doctor
-flutter build apk
+flutter build --dart-define=TMDB_KEY=$TMDB_KEY apk
 popd
+
 
