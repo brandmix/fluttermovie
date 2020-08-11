@@ -63,3 +63,4 @@ lib/generated_plugin_registrant.dart
 android/google-play-service-account.json
 **/flutter*.log
 **/mobile/android/.idea/
+**/fastlane/report.xml
