@@ -61,3 +61,5 @@ lib/generated_plugin_registrant.dart
 # End of https://www.toptal.com/developers/gitignore/api/flutter
 
 android/google-play-service-account.json
+**/flutter*.log
+**/mobile/android/.idea/
