@@ -30,12 +30,11 @@ fi
 
 export PATH="$PATH:~/Library/Android/sdk/platform-tools/:~/flutter/flutter/bin"
 export ANDROID_HOME=~/Library/Android/sdk
-export ANDROID_SDK_ROOT=~/Library/Android/sdk
 
 pushd ${GITHUB_WORKSPACE:-.}/mobile
 yes "y" | flutter doctor --android-licenses || :
 flutter doctor
-flutter build --dart-define=TMDB_KEY=$TMDB_KEY apk
+flutter build apk
 popd
 
 
