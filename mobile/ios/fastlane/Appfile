@@ -1,4 +1,4 @@
-app_identifier ENV["APP_IDENTIFIER"] || "com.gharmeet.inkino.ios" # The bundle identifier of your app
+app_identifier ENV["APP_IDENTIFIER"] || "com.wk.inkino" # The bundle identifier of your app
 apple_id ENV["APPLE_ID"] || "default@company.com" # Your Apple email address
 
 team_id("JDTCBWB77A") # Developer Portal Team ID
