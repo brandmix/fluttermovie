@@ -22,6 +22,7 @@ if [[ ! -d ~/flutter ]]; then
 	mkdir -p ~/flutter && pushd ~/flutter
 	wget --quiet https://storage.googleapis.com/flutter_infra/releases/stable/macos/flutter_macos_${FLUTTER_VER}-stable.zip
 	unzip -q flutter_macos_${FLUTTER_VER}-stable.zip
+	rm -rf flutter_macos_${FLUTTER_VER}-stable.zip
 
 	export PATH="$PATH:~/flutter/flutter/bin"
 	flutter precache
