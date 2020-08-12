@@ -35,7 +35,5 @@ export ANDROID_HOME=~/Library/Android/sdk
 pushd ${GITHUB_WORKSPACE:-.}/mobile
 yes "y" | flutter doctor --android-licenses || :
 flutter doctor
-flutter build apk --verbose
+flutter build apk
 popd
-
-
