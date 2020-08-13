@@ -17,14 +17,10 @@ jobs:
       uses: actions/checkout@v2
 
     - name: build
-      timeout-minutes: 1
       run: bash _ops/build.ios.sh
 
-    - name: install
-      run: bash _ops/publish_pre.ios.sh
-
     - name: publish
-      timeout-minutes: 15
+      timeout-minutes: 30
       run: bash _ops/publish.ios.sh
       env:
         PA_TOKEN: ${{ secrets.PA_TOKEN }}
