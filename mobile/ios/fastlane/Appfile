@@ -1,7 +1,4 @@
-app_identifier ENV["APP_IDENTIFIER"] || "com.wk.inkino" # The bundle identifier of your app
+team_id("JDTCBWB77A") # Developer Portal Team ID
+app_identifier "com.webkrux.inkino" # The bundle identifier of your app
 apple_id ENV["APPLE_ID"] || "default@company.com" # Your Apple email address
 
-team_id("JDTCBWB77A") # Developer Portal Team ID
-
-# For more information about the Appfile, see:
-#     https://docs.fastlane.tools/advanced/#appfile

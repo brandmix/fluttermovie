@@ -1,3 +1,4 @@
 json_key_file "google-play-service-account.json"
-package_name "com.wk.inkino"
+package_name "com.webkrux.inkino"
+
 
