@@ -37,9 +37,9 @@ platform :ios do
 	# Providing the xcodeproj is optional
 	increment_build_number
 
-    keychain_name = ENV['TEMP_KEYCHAIN_NAME'] || TEMP_KEYCHAIN_NAME_DEFAULT
-    keychain_password = ENV['TEMP_KEYCHAIN_PASSWORD'] || TEMP_KEYCHAN_PASSWORD_DEFAULT
-    ensure_temp_keychain(keychain_name, keychain_password)
+	keychain_name = ENV['TEMP_KEYCHAIN_NAME'] || TEMP_KEYCHAIN_NAME_DEFAULT
+	keychain_password = ENV['TEMP_KEYCHAIN_PASSWORD'] || TEMP_KEYCHAN_PASSWORD_DEFAULT
+	ensure_temp_keychain(keychain_name, keychain_password)
 
 	match(
 		type: "appstore",
@@ -48,18 +48,13 @@ platform :ios do
 		keychain_password: keychain_password
 	)
 
-	build_app(
+	build_ios_app(
 		workspace: "Runner.xcworkspace",
 		scheme: "Runner",
-		export_method: "app-store",
-		export_options: {
-			provisioningProfiles: {
-				"com.webkrux.inkino" => "match AppStore com.webkrux.inkino"
-			}
-		}
+		export_method: "app-store"
 	)
 
-    upload_to_testflight(
+	upload_to_testflight(
 		beta_app_feedback_email: ENV["APPLE_ID"],
 		beta_app_description: "Beta version of FlutterMovie",
 		demo_account_required: false,
