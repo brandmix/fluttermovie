@@ -1,0 +1,25 @@
+name: Publish IOS app
+
+on:
+  push:
+    branches: [ ios ]
+
+jobs:
+
+  build_ios:
+    if: |
+      !contains(github.event.head_commit.message, 'ci skip')
+      && !contains(github.event.pull_request.title, 'ci skip')
+    runs-on: macos-latest
+    steps:
+
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: build
+      run: bash _ops/build.ios.sh
+      env:
+        TMDB_KEY: ${{ secrets.TMDB_KEY }}
+        APPLE_ID: ${{ secrets.APPLE_ID }}
+        FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
+
