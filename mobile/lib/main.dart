@@ -18,7 +18,7 @@ Future<void> main() async {
   final keyValueStore = FlutterKeyValueStore(prefs);
   final store = createStore(Client(), keyValueStore);
 
-  FinnkinoApi.useFinnish = ui.window.locale.languageCode == 'fi';
+  //FinnkinoApi.useFinnish = ui.window.locale.languageCode == 'fi';
   runApp(InKinoApp(store));
 }
 
