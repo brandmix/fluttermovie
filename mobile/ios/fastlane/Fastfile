@@ -51,8 +51,7 @@ platform :ios do
 	build_ios_app(
 		workspace: "Runner.xcworkspace",
 		scheme: "Runner",
-		export_method: "app-store",
-		xcargs: "-allowProvisioningUpdates"
+		export_method: "app-store"
 	)
 
 	upload_to_testflight(
