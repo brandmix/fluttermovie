@@ -25,7 +25,8 @@ jobs:
       env:
         PA_TOKEN: ${{ secrets.PA_TOKEN }}
         TMDB_KEY: ${{ secrets.TMDB_KEY }}
-        APPLE_ID: ${{ secrets.APPLE_ID }}
         MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-        FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
+        APPLE_ID: ${{ secrets.APPLE_ID }}
+        FASTLANE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
+        FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
 
