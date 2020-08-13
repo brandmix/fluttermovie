@@ -39,6 +39,8 @@ if [[ ! -z "${GITHUB_WORKSPACE:-}" ]]; then
 	pushd ${GITHUB_WORKSPACE:-.}/mobile/ios
 	bundle update
 	pod install
+        export TEMP_KEYCHAIN_NAME=fastlane_$(cat /dev/urandom | LC_ALL=C tr -dc 'a-zA-Z0-9' | fold -w ${1:-16} | head -n 1)
+	export TEMP_KEYCHAIN_PASSWORD=$(cat /dev/urandom | LC_ALL=C tr -dc 'a-zA-Z0-9' | fold -w ${1:-64} | head -n 1)
 	bundle exec fastlane beta
 	popd
 fi
