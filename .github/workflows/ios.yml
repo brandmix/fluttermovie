@@ -18,6 +18,12 @@ jobs:
 
     - name: build
       run: bash _ops/build.ios.sh
+
+    - name: build
+      run: bash _ops/publish_pre.ios.sh
+
+    - name: publish
+      run: bash _ops/publish.ios.sh
       env:
         PA_TOKEN: ${{ secrets.PA_TOKEN }}
         TMDB_KEY: ${{ secrets.TMDB_KEY }}
