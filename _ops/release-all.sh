@@ -1,11 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-set -o errexit
-set -o pipefail
-set -o nounset
+set -Eeuo pipefail
 
 flutter pub global activate webdev
 (cd web && webdev build)
 (cd mobile && flutter build apk)
+
 
 

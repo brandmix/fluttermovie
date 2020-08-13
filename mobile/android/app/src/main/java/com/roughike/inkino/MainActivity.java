@@ -1,4 +1,4 @@
-package com.gharmeet.inkino;
+package com.webkrux.inkino;
 
 import android.os.Bundle;
 

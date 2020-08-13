@@ -23,13 +23,21 @@ elif [[ "${1:-}" == "web" ]]; then
 	echo "Done! - Check in browser"
 
 elif [[ "${1:-}" == "android" ]]; then
-	docker run -e TMDB_KEY -v ~/.pub-cache:/pub-cache -e PUB_CACHE=/pub-cache -v `pwd`:/src -w /src --rm fmv_tools bash _ops/build.android.sh
+	if type docker; then
+		docker run -e TMDB_KEY -v ~/.pub-cache:/pub-cache -e PUB_CACHE=/pub-cache -v `pwd`:/src -w /src --rm fmv_tools bash _ops/build.android.sh
+	else
+		PUB_CACHE=~/.pub-cache bash _ops/build.android.mac.sh
+	fi
 
 elif [[ "${1:-}" == "ios" ]]; then
 	bash _ops/build.ios.sh
 
 elif [[ "${1:-}" == "clean" ]]; then
-	docker run -e TMDB_KEY -v ~/.pub-cache:/pub-cache -e PUB_CACHE=/pub-cache -v `pwd`:/src -w /src --rm fmv_tools bash _ops/clean.sh
+	if type docker; then
+		docker run -e TMDB_KEY -v ~/.pub-cache:/pub-cache -e PUB_CACHE=/pub-cache -v `pwd`:/src -w /src --rm fmv_tools bash _ops/clean.sh
+	else
+		PUB_CACHE=~/.pub-cache bash _ops/clean.sh
+	fi
 
 else
 	echo "---"

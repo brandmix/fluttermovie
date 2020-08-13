@@ -1,1 +1,3 @@
-[{"outputType":{"type":"APK"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":5},"path":"app-release.apk","properties":{"packageId":"com.gharmeet.inkino","split":"","minSdkVersion":"16"}}]
+[{"outputType":{"type":"APK"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":5},"path":"app-release.apk","properties":{"packageId":"com.webkrux.inkino","split":"","minSdkVersion":"16"}}]
+
+
