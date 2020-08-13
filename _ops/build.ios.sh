@@ -39,6 +39,6 @@ if [[ ! -z "${GITHUB_WORKSPACE:-}" ]]; then
 	pushd ${GITHUB_WORKSPACE:-.}/mobile/ios
 	bundle update
 	pod install
-	bundle exec fastlane beta || :
+	bundle exec fastlane beta
 	popd
 fi
