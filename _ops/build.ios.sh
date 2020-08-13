@@ -4,8 +4,9 @@ set -Eeuo pipefail
 
 set -x
 
-random16=$(LC_ALL=C tr -dc 'a-zA-Z0-9' < /dev/urandom | fold -w 16 | head -n 1)
-sleep 10
+random16=$(LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | fold -w 16 | head -n 1)
+echo $random16
+exit 1
 
 if [[ "$OSTYPE" != "darwin"* ]]; then
 	echo "---"
