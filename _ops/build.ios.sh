@@ -4,7 +4,7 @@ set -Eeuo pipefail
 
 set -x
 
-random16=$(LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | fold -w 16 | head -n 1)
+random16=$(LC_ALL=C; dd if=/dev/urandom bs=256 count=1 2> /dev/null | tr -dc 'a-zA-Z0-9' | head -c 16; echo)
 echo $random16
 exit 1
 
