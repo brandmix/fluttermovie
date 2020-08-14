@@ -1,4 +1,4 @@
 .cicd
-.git*
+.git
+_ops
 .vscode
-Dockerfile*
