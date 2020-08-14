@@ -1,4 +1,3 @@
 .cicd
-.git
-_ops
+.git*
 .vscode
