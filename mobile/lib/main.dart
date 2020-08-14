@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:ui' as ui;
+//import 'dart:ui' as ui;
 
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +18,7 @@ Future<void> main() async {
   final keyValueStore = FlutterKeyValueStore(prefs);
   final store = createStore(Client(), keyValueStore);
 
-  FinnkinoApi.useFinnish = ui.window.locale.languageCode == 'fi';
+//  FinnkinoApi.useFinnish = ui.window.locale.languageCode == 'fi';
   runApp(InKinoApp(store));
 }
 
