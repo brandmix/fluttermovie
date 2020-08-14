@@ -67,3 +67,4 @@ android/google-play-service-account.json
 **/fastlane/report.xml
 **/Runner.ipa
 **/Runner.app.dSYM*
+**/mobile/ios/Flutter/DartDefines.xcconfig
