@@ -8,7 +8,11 @@ on:
 
 jobs:
 
-  build_web:
+  build:
+    name: Build
+    if: |
+      !contains(github.event.head_commit.message, 'ci skip')
+      && !contains(github.event.pull_request.title, 'ci skip')
     runs-on: ubuntu-latest
     steps:
 
@@ -28,7 +32,7 @@ jobs:
         GITHUB_PR_SHA: ${{ github.event.pull_request.head.sha }}
 
   dispatch:
-    needs: build_web
+    needs: build
     strategy:
       matrix:
         repo: ["slaystack/xops"]
@@ -46,4 +50,3 @@ jobs:
          client-payload: '{ "app" : "fluttermovie","dependency" : "core","github": ${{ tojson(github) }}}'
 
  #curl -vs --request POST   --url https://api.github.com/repos/slaystack/xops/dispatches   --header "authorization: token ${PA_TOKEN}"   --header 'Accept: application/vnd.github.everest-preview+json'   --header 'content-type: application/json'   --data '{"event_type": "ops_update","client_payload": {"app" : "demo","dependency" : "demo","github" : {"ref": "refs/heads/master","sha": "5e06ae0aa5caa5b4a18adaed27021f0a1cb86e8f","repository": "aweps/demo"}}}'
-
