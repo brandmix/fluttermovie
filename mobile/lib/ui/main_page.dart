@@ -38,8 +38,8 @@ class _MainPageState extends State<MainPage>
         physics: const NeverScrollableScrollPhysics(),
         children: [
           EventsPage(EventListType.nowInTheaters),
-          const ShowtimesPage(),
           EventsPage(EventListType.comingSoon),
+          const ShowtimesPage(),
         ],
       ),
     );
@@ -110,12 +110,12 @@ class _BottomTabs extends StatelessWidget {
             backgroundColor: Theme.of(context).primaryColor,
           ),
           BottomNavigationBarItem(
-            title: Text(messages.showtimes),
+            title: Text(messages.comingSoon),
             icon: const Icon(Icons.schedule),
             backgroundColor: Theme.of(context).primaryColor,
           ),
           BottomNavigationBarItem(
-            title: Text(messages.comingSoon),
+            title: Text(messages.showtimes),
             icon: const Icon(Icons.whatshot),
             backgroundColor: Theme.of(context).primaryColor,
           ),
